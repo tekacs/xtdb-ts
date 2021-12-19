@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 import { URL, URLSearchParams } from 'whatwg-url'
 import { toEDNStringFromSimpleObject } from 'edn-data'
-import * as types from './types.js'
+import * as types from '../types'
 
 type Method = 'GET' | 'POST'
 

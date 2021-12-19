@@ -1,4 +1,4 @@
-import XTDBClient from './client.js'
+import XTDBClient from './client'
 
 class XTDBPlayground {
     client: XTDBClient
@@ -85,3 +85,5 @@ class XTDBPlayground {
 
 // const playground = new XTDBPlayground(3030)
 // playground.txLog().then(v => console.log('success', v)).catch(e => console.error('failure', e))
+
+export { default as XTDBClient } from './client'
