@@ -1,6 +1,6 @@
 {
   "name": "xtdb-ts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An XTDB client library for TypeScript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -29,7 +29,7 @@
     "type": "git",
     "url": "git+ssh://git@github.com/tekacs/xtdb-ts.git"
   },
-  "author": "",
+  "author": "Amar Sood (tekacs)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/tekacs/xtdb-ts/issues"
