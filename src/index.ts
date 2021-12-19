@@ -53,8 +53,8 @@ class XTDBPlayground {
     
     submitTx() {
         return this.client.submitTx([
-            ["put", {"xt/id": "ivan", name: "Ivan", lastName: "Motyashov"}],
-            ["put", {"xt/id": "vadim", name: "Vadim", lastName: "Kogan"}],
+            ["put", {"xt/id": "ivan", name: "Ivan", lastName: "M"}],
+            ["put", {"xt/id": "vadim", name: "Vadim", lastName: "K"}],
         ])
     }
 
@@ -81,9 +81,17 @@ class XTDBPlayground {
     slowestQueries() {
         return this.client.slowestQueries()
     }
+
+    pull() {
+        return this.client.pull('ivan', '[*]')
+    }
+
+    pullMany() {
+        return this.client.pullMany(['ivan', 'vadim'], '[*]')
+    }
 }
 
 // const playground = new XTDBPlayground(3030)
 // playground.txLog().then(v => console.log('success', v)).catch(e => console.error('failure', e))
 
-export { default as XTDBClient } from './client'
+export { default as XTDBClient } from './client/index.js'

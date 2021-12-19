@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 import { URL, URLSearchParams } from 'whatwg-url'
-import { toEDNStringFromSimpleObject } from 'edn-data'
-import * as types from '../types'
+import { EDNVal, parseEDNString, toEDNString, toEDNStringFromSimpleObject } from 'edn-data'
+import * as types from '../types/index.js'
 
 type Method = 'GET' | 'POST'
 
@@ -200,5 +200,27 @@ export default class XTDBClient {
             'GET',
             {},
         )
+    }
+
+    async pull(eid: types.EIDSpec, pullExpression: string): Promise<Object | null> {
+        const query = toEDNString({
+            map: [
+                [{key: 'find'}, [{list: [{sym: 'pull'}, {sym: '?e'}, (parseEDNString(pullExpression) as EDNVal)]}]],
+                [{key: 'in'}, [{sym: '?e'}]]
+            ]
+        })
+        console.log(query)
+        return (await this.query(query, { inArgs: [eid] }))[0][0]
+    }
+
+    async pullMany(eids: types.EIDSpec[], pullExpression: string): Promise<Object[]> {
+        const query = toEDNString({
+            map: [
+                [{key: 'find'}, [{list: [{sym: 'pull'}, {sym: '?e'}, (parseEDNString(pullExpression) as EDNVal)]}]],
+                [{key: 'in'}, [[{sym: '?e'}, {sym: '...'}]]]
+            ]
+        })
+        console.log(query, eids)
+        return (await this.query(query, { inArgs: [eids] })).map(a => a[0])
     }
 }
