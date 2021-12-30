@@ -1,12 +1,15 @@
-import fetch from 'node-fetch'
+import fetch from 'cross-fetch'
 import { URL, URLSearchParams } from 'whatwg-url'
 import { EDNVal, parseEDNString, toEDNString, toEDNStringFromSimpleObject } from 'edn-data'
 import * as types from '../types/index.js'
 
 type Method = 'GET' | 'POST'
 
+// TODO: Add support for JWT
 // TODO: Add the POST version of /_xtdb/query (which only accepts EDN in-parameters, using the edn-data npm library)
 //       https://github.com/jorinvo/edn-data
+// TODO: Add lazy `open-q`, `open-entity-history`, `open-tx-log` by adding support for streaming responses.
+//       https://github.com/xtdb/xtdb/blob/afd581b4747f18b1332a470ff94174abc6a25947/modules/http-client/src/xtdb/remote_api_client.clj#L146
 export default class XTDBClient {
     port: number
     baseUrl: URL

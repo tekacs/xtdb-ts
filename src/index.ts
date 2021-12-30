@@ -1,4 +1,7 @@
-import XTDBClient from './client'
+import XTDBClient from './client/index.js'
+import { enableAllPlugins } from 'immer'
+
+enableAllPlugins()
 
 class XTDBPlayground {
     client: XTDBClient
