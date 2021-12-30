@@ -1,6 +1,6 @@
 {
   "name": "xtdb-ts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An XTDB client library for TypeScript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
